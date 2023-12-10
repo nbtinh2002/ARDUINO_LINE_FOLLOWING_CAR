@@ -1,6 +1,3 @@
-//ARDUINO LINE FOLLOWING CAR//
-// YOU HAVE TO INSTALL THE AFMOTOR LIBRARY BEFORE UPLOAD THE CODE//
-// GO TO SKETCH >> INCLUDE LIBRARY >> ADD .ZIP LIBRARY >> SELECT AF MOTOR ZIP FILE //
  
 //including the libraries
 #include <AFMotor.h>
@@ -28,7 +25,6 @@ void setup() {
 void loop(){
   //printing values of the sensors to the serial monitor
   Serial.println(digitalRead(left));
-  
   Serial.println(digitalRead(right));
 
   //line detected by bot
@@ -38,7 +34,6 @@ void loop(){
     motor1.setSpeed(80);
     motor2.run(FORWARD);
     motor2.setSpeed(80);
-
   }
   //line detected by left sensor
   else if(digitalRead(left)==1 && !analogRead(right)==0){
@@ -46,9 +41,7 @@ void loop(){
     motor1.run(BACKWARD);
     motor1.setSpeed(70);
     motor2.run(FORWARD);
-    motor2.setSpeed(70);
-
-    
+    motor2.setSpeed(70);    
   }
   //line detected by right sensor
   else if(!analogRead(left)==0 && digitalRead(right)==1){
@@ -56,9 +49,7 @@ void loop(){
     motor1.run(FORWARD);
     motor1.setSpeed(70);
     motor2.run(BACKWARD);
-    motor2.setSpeed(70);
-  
-   
+    motor2.setSpeed(70);  
   }
   //line detected by none
   else if(!analogRead(left)==0 && !analogRead(right)==0){
@@ -67,7 +58,5 @@ void loop(){
     motor1.setSpeed(0);
     motor2.run(RELEASE);
     motor2.setSpeed(0);
-   
-  }
-  
+  }  
 }
